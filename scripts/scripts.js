@@ -16,6 +16,20 @@ import {
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
 
+export function createEl(name, attributes = {}, content, parentEl) {
+  const el = document.createElement(name);
+  for (const attrName in attributes) {
+    el.setAttribute(attrName, attributes[attrName]);
+  }
+  if (content) {
+    el.append(content);
+  }
+  if (parentEl) {
+    parentEl.append(el);
+  }
+  return el;
+}
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -37,7 +51,7 @@ function buildHeroBlock(main) {
  */
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    //buildHeroBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -56,6 +70,16 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+}
+
+function loadExternalScripts(...scriptFilePaths) {
+  scriptFilePaths?.forEach(scriptFilePath => {
+    createEl('script', {
+      src: scriptFilePath,
+      type: 'application/javascript',
+      defer: true,
+    }, '', document.head);
+  });
 }
 
 /**
