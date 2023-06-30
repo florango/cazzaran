@@ -193,10 +193,31 @@ main .section {
   
 }
 
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
+
+main .columns-wrapper img {
+  max-width: 85vw;
+  width: auto;
+  height: auto;
+  margin: 10px auto 20px;
+}
+
 main .section:first-of-type {
   background-color: #343456;
   color: #fff;
-  
+}
+
+main .section:first-of-type .columns img {
+  width: 100px;
+  height: auto;
 }
 
 main .section:nth-child(2n) {
@@ -207,6 +228,10 @@ main .section:nth-child(2n) {
 main .section:nth-child(5n) {
   background-color: #ffabab;
   color: #23253c;
+}
+
+main .section:nth-child(5n) a {
+  color: #323295;
 }
 
 main .section .default-content-wrapper {
@@ -224,6 +249,10 @@ main .section .default-content-wrapper {
     max-width: 1200px;
     margin: auto;
   }
+}
+
+main .columns-container:nth-child(2) .columns>div {
+  flex-direction: column-reverse;
 }
 
 main .columns-container:nth-child(1) .columns>div {
@@ -249,13 +278,6 @@ main .columns-wrapper h2 {
   padding: 0 30px;
 }
 
-main .columns-wrapper img {
-  max-width: 85vw;
-  width: auto;
-  height: auto;
-  margin: 10px auto 20px;
-}
-
 @media (width >= 900px) {
   main .columns-wrapper img {
     max-width: 35vw; 
@@ -272,10 +294,6 @@ main .section em {
   color: #e9e962;
 }
 
-main .columns-container:nth-child(2) .columns>div {
-  flex-direction: column-reverse;
-}
-
 @media (width >= 900px) {
   main .columns-container:nth-child(2) .columns>div {
     flex-direction: unset;
@@ -284,20 +302,10 @@ main .columns-container:nth-child(2) .columns>div {
 
 main .section h2 strong {
   font-style: normal;
-  font-weight: 900;
   font-weight: 750;
   color: #e9e962;
 }
 
-a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: var(--link-hover-color);
-}
 
 a.button:any-link,
 button {
