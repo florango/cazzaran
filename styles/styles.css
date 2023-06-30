@@ -76,11 +76,11 @@ h1 {
 }
 
 h2 {
-  font-size: var(--heading-font-size-m);
+  font-size: var(--heading-font-size-l);
 }
 
 h3 {
-  font-size: var(--heading-font-size-l);
+  font-size: var(--heading-font-size-m);
 }
 
 h4 {
