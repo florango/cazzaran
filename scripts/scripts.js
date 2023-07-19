@@ -16,6 +16,9 @@ import {
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
 
+const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+const isMac = (navigator.appVersion.indexOf('Mac') != -1);
+
 export function createEl(name, attributes = {}, content, parentEl) {
   const el = document.createElement(name);
   for (const attrName in attributes) {
@@ -58,6 +61,19 @@ function buildAutoBlocks(main) {
   }
 }
 
+function decoratePhoneLinks(elem) {
+  elem.querySelectorAll('a[href="#textus"]').forEach((a) => {
+    a.addEventListener('click', () => {
+      // TODO: Make this configurable
+      if (isMobile || isMac) {
+        window.open('sms:+17608362801?&body=Can we talk about Software?');
+      } else {
+        window.open('mailto:hey@cazzaran.com?subject=Can we talk about Software?');
+      }
+    })
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -68,6 +84,7 @@ export function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
+  decoratePhoneLinks(main);
   decorateSections(main);
   decorateBlocks(main);
 }

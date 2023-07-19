@@ -69,6 +69,7 @@ h6 {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   scroll-margin: calc(var(--nav-height) + 1em);
+  font-weight: 300;
 }
 
 h1 {
@@ -104,6 +105,7 @@ blockquote {
   margin: 0;
   margin-top: 1em;
   margin-bottom: 1em;
+  font-weight: 150;
 }
 
 hr {
@@ -290,7 +292,7 @@ main .section.highlight {
 
 main .section em {
   font-style: normal;
-  font-weight: 750;
+  font-weight: 500;
   color: #e9e962;
 }
 
@@ -302,7 +304,7 @@ main .section em {
 
 main .section h2 strong {
   font-style: normal;
-  font-weight: 750;
+  font-weight: 600;
   color: #e9e962;
 }
 
@@ -342,7 +344,12 @@ button:disabled:hover {
   cursor: unset;
 }
 
-a.button.secondary,
+a.button.primary,
+button.primary {
+  background-color: var(--overlay-background-color);
+}
+
+main .section a.button.secondary,
 button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
