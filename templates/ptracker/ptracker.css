@@ -1,0 +1,114 @@
+.tracker-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  padding: 20px 0;
+  font-size: 10px;
+}
+
+.tracker-holder .progress-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  column-gap: 2px;
+  transform: skew(-20deg);
+  border-radius: 20px 30px;
+  
+  /* border-top-left-radius: 20px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 20px; */
+  background-color: rgb(0 0 0 / 0%);
+}
+
+.tracker-holder .progress-bar .part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  height: 30px;
+  padding: 0;
+  background: gray;
+  box-shadow: 7px 5px 15px rgb(0 0 0 / 25%);
+  cursor: pointer;
+}
+
+.tracker-holder .progress-bar .part.done {
+  color: white;
+  background: #343456;
+}
+
+.tracker-holder .progress-bar .part.current {
+  height: 45px;
+  background: #e9e962;
+}
+
+.tracker-holder .progress-bar .part.future {
+  color: white;
+  background: #3738a4;
+}
+
+.tracker-holder .progress-bar .part div {  
+  transform: skew(20deg);
+  display: none;
+}
+
+/* .tracker-holder .progress-bar .part:nth-child(1) {
+  flex-grow: 10;
+}
+
+.tracker-holder .progress-bar .part:nth-child(2) {
+  flex-grow: 3;
+}
+
+.tracker-holder .progress-bar .part:nth-child(3) {
+  flex-grow: 13;
+}
+
+.tracker-holder .progress-bar .part:nth-child(4) {
+  flex-grow: 9;
+}
+
+.tracker-holder .progress-bar .part:nth-child(5) {
+  flex-grow: 3;
+} */
+
+@media (width >= 900px) {
+  .tracker-holder {
+    padding: 50px 0;
+    font-size: unset;
+  }
+
+  .tracker-holder .progress-bar {
+    width: 75%;
+  }
+
+  .tracker-holder .progress-bar .part {
+    height: 65px;
+    padding: 20px;
+    box-shadow: 20px 45px 50px rgb(0 0 0 / 25%);
+  }
+
+  .tracker-holder .progress-bar .part:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 30px;
+  }
+
+  .tracker-holder .progress-bar .part:last-child {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .tracker-holder .progress-bar .part.current {
+    height: 85px;
+    background: #e9e962;
+  }
+
+  .tracker-holder .progress-bar .part div {
+    display: unset;
+  }
+}

@@ -12,5 +12,9 @@ export default async function decorate(block) {
     block.innerHTML = html;
 
     const headerEl = document.querySelector('header');
+
+    headerEl.querySelector('img')?.addEventListener('click', () => {
+      window.location.href = '/';
+    });
   }
 }

@@ -11,6 +11,7 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  getMetadata,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -19,18 +20,55 @@ window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information 
 const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 const isMac = (navigator.appVersion.indexOf('Mac') != -1);
 
-export function createEl(name, attributes = {}, content, parentEl) {
+export function createEl(name, attributes = {}, content = '', parentEl = null) {
   const el = document.createElement(name);
-  for (const attrName in attributes) {
-    el.setAttribute(attrName, attributes[attrName]);
-  }
+
+  Object.keys(attributes).forEach((key) => {
+    el.setAttribute(key, attributes[key]);
+  });
   if (content) {
-    el.append(content);
+    if (typeof content === 'string') {
+      el.innerHTML = content;
+    } else if (content instanceof NodeList) {
+      content.forEach((itemEl) => {
+        el.append(itemEl);
+      });
+    } else {
+      el.append(content);
+    }
   }
   if (parentEl) {
     parentEl.append(el);
   }
   return el;
+}
+
+export async function getIndex(indexURL = '/query-index.json') {
+  let indexObj;
+  try {
+    const resp = await fetch(indexURL);
+    const indexJSON = JSON.stringify(await resp.json());
+    indexObj = await JSON.parse(indexJSON);
+    indexObj.getEntry = function (basePath) {
+      indexObj.data.forEach((entry) => {
+        if (basePath === entry.path) {
+          return entry;
+        }
+      });
+    };
+    indexObj.getEntries = function (rootPath = '/') {
+      const entries = [];
+      indexObj.data.forEach((entry) => {
+        if (entry.path.startsWith(rootPath)) {
+          entries.push(entry);
+        }
+      });
+      return entries;
+    };
+  } catch (error) {
+    console.error('Fetching Index failed', error);
+  }
+  return indexObj;
 }
 
 /**
@@ -72,6 +110,32 @@ function decoratePhoneLinks(elem) {
       }
     })
   });
+}
+
+async function loadTemplate(doc, templateName) {
+  try {
+    const cssLoaded = new Promise((resolve) => {
+      loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`, resolve);
+    });
+    const decorationComplete = new Promise((resolve) => {
+      (async () => {
+        try {
+          const mod = await import(`../templates/${templateName}/${templateName}.js`);
+          if (mod.default) {
+            await mod.default(doc);
+          }
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log(`failed to load module for ${templateName}`, error);
+        }
+        resolve();
+      })();
+    });
+    await Promise.all([cssLoaded, decorationComplete]);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(`failed to load block ${templateName}`, error);
+  }
 }
 
 /**
@@ -136,6 +200,10 @@ export function addFavIcon(href) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
+  const templateName = getMetadata('template');
+  if (templateName) {
+    loadTemplate(doc, templateName);
+  }
   const main = doc.querySelector('main');
   await loadBlocks(main);
 
