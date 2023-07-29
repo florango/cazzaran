@@ -43,6 +43,10 @@ export function createEl(name, attributes = {}, content = '', parentEl = null) {
   return el;
 }
 
+export function makeFriendy(string) {
+  return string?.toLowerCase().trim().replace(' ', '-');
+}
+
 export async function getJSON(pathToJSON) {
   let dataObj;
   try {

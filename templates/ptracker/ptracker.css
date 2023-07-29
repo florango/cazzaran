@@ -1,3 +1,17 @@
+main .section:first-child {
+  position: relative;
+}
+
+main .section:first-child img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .3;
+}
+
 .tracker-holder {
   display: flex;
   flex-direction: column;
@@ -75,9 +89,9 @@
 
 .tracker-holder .info .details-container table {
   padding: 16px;
-  border: 1px solid gray;
-  border-radius: 10px;
+  background-color: gainsboro;
   width: 100%;
+  border-spacing: 0;
 }
 
 .tracker-holder .info .details-container table tr {
@@ -114,9 +128,34 @@
   padding: 16px;
 }
 
+.tracker-holder .info .details-container table tr td:last-child {
+  border-bottom: 1px solid gainsboro;
+}
+
+.tracker-holder .info .details-container table tr:nth-child(2) td:first-child {
+  border-top-left-radius: 10px;
+}
+
+.tracker-holder .info .details-container table tr:nth-child(2) td:last-child {
+  border-top-right-radius: 10px;
+}
+
+.tracker-holder .info .details-container table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.tracker-holder .info .details-container table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
 .tracker-holder .info .details-container table tr td label {
   font-weight: 700;
 }
+
+.tracker-holder .info .details-container table tr td:first-child > label {
+  font-size: 25px;
+}
+
 a.button.primary,
 button.primary {
   color: black;
@@ -163,11 +202,15 @@ button.primary {
   }
 
   .tracker-holder .info .details-container table {
-    border: 1px solid gray;
+    border-radius: 10px;    
   }
 
   .tracker-holder .info .details-container table tr {
     display: table-row; 
+  }
+
+  .tracker-holder .info .details-container table tr td {
+    border-bottom: 1px solid gainsboro;
   }
 
   .tracker-holder .info .details-container table tr:first-child {
@@ -177,6 +220,22 @@ button.primary {
 
   .tracker-holder .info .details-container table tr:first-child > td {
     
+  }
+
+  .tracker-holder .info .details-container table tr:nth-child(2) td:first-child {
+    border-top-left-radius: 10px;
+  }
+
+  .tracker-holder .info .details-container table tr:nth-child(2) td:last-child {
+    border-top-right-radius: 10px;
+  }
+
+  .tracker-holder .info .details-container table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+
+  .tracker-holder .info .details-container table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
   }
 
   .tracker-holder .info .details-container table label {

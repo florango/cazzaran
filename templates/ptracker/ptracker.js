@@ -1,5 +1,5 @@
 import {
-  createEl, getJSON,
+  createEl, getJSON, makeFriendy,
 } from '../../scripts/scripts.js';
 
 async function getStatus(pId) {
@@ -65,7 +65,7 @@ export default async function decorate(doc) {
     Object.keys(phases).forEach(async (key) => {
       const tasks = phases[key];
       const progressBarPartEl = createEl('div', {
-        id: key,
+        id: makeFriendy(key),
         class: 'part',
       }, `
         <div>
@@ -107,11 +107,17 @@ export default async function decorate(doc) {
       const phase = getPhase(phaseName);
       const headerEl = infoEl.querySelector('h2');
       headerEl.textContent = phaseName;
+      const phaseId = makeFriendy(phaseName);
+      const headerSectionEl = document.querySelector('.section:first-child');
+      const headerImageEl = headerSectionEl.querySelector('img') || headerSectionEl.appendChild(document.createElement('img'));
+      headerImageEl.src = `/assets/${phaseId}.jpg`;
       detailsContainerEl.innerHTML = '';
       const details = [...[labels], ...phase];
       const taskTableEl = createEl('table', {}, '', detailsContainerEl);
+      const roles = await getJSON('/resources/ptracker/roles.json');
+      const statusLevels = await getJSON('/resources/ptracker/status-levels.json');
       details.forEach(async (task, i) => {
-        const status = (task.status || 'not-started').toLowerCase().trim().replace(' ', '-');
+        const status = makeFriendy(task.status || 'not-started');
         const taskRowEl = createEl('tr', {
           class: `task-item ${status}`,
         }, `
@@ -152,7 +158,6 @@ export default async function decorate(doc) {
           }
 
           const roleCellEl = taskRowEl.querySelector('.role');
-          const roles = await getJSON('/resources/ptracker/roles.json');
           const role = roles?.data?.filter(r => {
             return r.Assigned === roleCellEl.dataset.is;
           });
@@ -162,7 +167,6 @@ export default async function decorate(doc) {
           });
 
           const statusCellEl = taskRowEl.querySelector('.status-level');
-          const statusLevels = await getJSON('/resources/ptracker/status-levels.json');
           const statusLevel = statusLevels?.data?.filter(s => {
             return s.Status === statusCellEl.dataset.is;
           });
