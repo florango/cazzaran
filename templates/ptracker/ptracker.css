@@ -5,7 +5,7 @@
   justify-content: center;
   width: 100vw;
   padding: 20px 0;
-  font-size: 10px;
+  font-size: 17px;
 }
 
 .tracker-holder .progress-bar {
@@ -57,30 +57,76 @@
   display: none;
 }
 
-/* .tracker-holder .progress-bar .part:nth-child(1) {
-  flex-grow: 10;
+.tracker-holder .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90vw;
 }
 
-.tracker-holder .progress-bar .part:nth-child(2) {
-  flex-grow: 3;
+.tracker-holder .info .details-container {
+  display: none;
+  width: 100%;
 }
 
-.tracker-holder .progress-bar .part:nth-child(3) {
-  flex-grow: 13;
+.tracker-holder .info .details-container.show {
+  display: block;
 }
 
-.tracker-holder .progress-bar .part:nth-child(4) {
-  flex-grow: 9;
+.tracker-holder .info .details-container table {
+  padding: 16px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 100%;
 }
 
-.tracker-holder .progress-bar .part:nth-child(5) {
-  flex-grow: 3;
-} */
+.tracker-holder .info .details-container table tr {
+  display: flex;
+  flex-direction: column;
+}
+
+.tracker-holder .info .details-container table tr:first-child {
+  display: none;
+}
+
+.tracker-holder .info .details-container table tr.not-started {
+  background-color: white;
+}
+
+.tracker-holder .info .details-container table tr.in-process {
+  background-color: lightgreen;
+}
+
+.tracker-holder .info .details-container table tr.finished {
+  background-color: silver;
+}
+
+.tracker-holder .info .details-container table tr.waiting {
+  background-color: coral;
+}
+
+.tracker-holder .info .details-container table tr.stuck {
+  color: white;
+  background-color: crimson;
+}
+
+.tracker-holder .info .details-container table tr td {
+  padding: 16px;
+}
+
+.tracker-holder .info .details-container table tr td label {
+  font-weight: 700;
+}
+a.button.primary,
+button.primary {
+  color: black;
+  background-color: var(--overlay-background-color);
+}
 
 @media (width >= 900px) {
   .tracker-holder {
     padding: 50px 0;
-    font-size: unset;
+    font-size: 17px;
   }
 
   .tracker-holder .progress-bar {
@@ -110,5 +156,30 @@
 
   .tracker-holder .progress-bar .part div {
     display: unset;
+  }
+
+  .tracker-holder .info {
+    width: 75%;
+  }
+
+  .tracker-holder .info .details-container table {
+    border: 1px solid gray;
+  }
+
+  .tracker-holder .info .details-container table tr {
+    display: table-row; 
+  }
+
+  .tracker-holder .info .details-container table tr:first-child {
+    display: table-row;
+    font-weight: 600;
+  }
+
+  .tracker-holder .info .details-container table tr:first-child > td {
+    
+  }
+
+  .tracker-holder .info .details-container table label {
+    display: none;
   }
 }

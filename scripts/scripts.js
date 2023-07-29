@@ -43,6 +43,17 @@ export function createEl(name, attributes = {}, content = '', parentEl = null) {
   return el;
 }
 
+export async function getJSON(pathToJSON) {
+  let dataObj;
+  try {
+    const resp = await fetch(pathToJSON);
+    dataObj = await resp.json();
+  } catch (error) {
+    console.error('Fetching JSON failed', error);
+  }
+  return dataObj;
+}
+
 export async function getIndex(indexURL = '/query-index.json') {
   let indexObj;
   try {
