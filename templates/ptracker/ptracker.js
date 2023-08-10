@@ -124,6 +124,7 @@ export default async function decorate(doc) {
           <td class="task" data-is="${task.task}" data-description="${task.desc}">
             <label>${labels.task}<br/></label> ${task.task}
           </td>
+          <!--
           <td data-is="${task.time}">
           <label>${labels.time}<br/></label> ${task.time}
           </td>
@@ -133,6 +134,7 @@ export default async function decorate(doc) {
           <td data-is="${task.end}">
           <label>${labels.end}<br/></label> ${task.end}
           </td>
+          -->
           <td data-is="${task.done}">
           <label>${labels.done}<br/></label> ${task.done}
           </td>
