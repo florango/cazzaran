@@ -17,8 +17,8 @@ import {
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
 
-const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-const isMac = (navigator.appVersion.indexOf('Mac') != -1);
+export const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+export const isMac = (navigator.appVersion.indexOf('Mac') != -1);
 
 export function createEl(name, attributes = {}, content = '', parentEl = null) {
   const el = document.createElement(name);
