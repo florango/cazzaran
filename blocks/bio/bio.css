@@ -1,0 +1,28 @@
+.bio {
+  margin-bottom: 30px;
+}
+
+.bio > div div {
+  padding: 16px;
+}
+
+.bio > div:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (width >= 900px) {
+  .bio > div:first-child {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .bio > div:first-child > div:first-child {
+    width: 60%;
+  }
+}
+
+.bio img {
+  width: 100%;
+  height: auto;
+}
