@@ -1,5 +1,7 @@
 main .section:first-of-type {
   display: flex;
+  background-color: white;
+  color: #343456;
 }
 
 #side-rail {
@@ -7,6 +9,11 @@ main .section:first-of-type {
 }
 
 @media (min-width: 1024px) {
+  main .section .default-content-wrapper {
+    width: 75vw;
+    margin-left: 25vw;
+  }
+
   #side-rail {
     position: fixed;
     display: flex;
@@ -18,5 +25,6 @@ main .section:first-of-type {
 
   #side-rail a {
     font-size: smaller;
+    color: #343456;
   }
 } 
