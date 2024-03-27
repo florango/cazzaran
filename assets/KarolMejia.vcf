@@ -1,14 +1,14 @@
 BEGIN:VCARD
 VERSION:3.0
 PRODID:-//Apple Inc.//macOS 13.2//EN
-N:Oransky;Joshua;;;
-FN:Joshua Oransky
+N:Mejia;Karol;;;
+FN:Karol Mejia
 ORG:Cazzaran;
-EMAIL;type=INTERNET;type=HOME;type=pref:josh@cazzaran.com
-TEL;type=CELL;type=VOICE;type=pref:+18052163069
+EMAIL;type=INTERNET;type=HOME;type=pref:karol@cazzaran.com
+TEL;type=CELL;type=VOICE;type=pref:+13053350108
 item1.URL;type=pref:https://cazzaran.com
 item1.X-ABLabel:_$!<HomePage>!$_
-item2.URL:https://www.linkedin.com/in/joshuaoransky/
+item2.URL:https://www.linkedin.com/in/karolmejia/
 item2.X-ABLabel:LinkedIn
 PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAASABIAAD/4QBMRXhpZgAATU0AKgAA
  AAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAASaADAAQAAAABAA
