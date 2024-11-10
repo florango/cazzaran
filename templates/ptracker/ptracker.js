@@ -16,7 +16,7 @@ async function getStatus(pId) {
 export default async function decorate(doc) {
   const mainEl = doc.querySelector('main');
   const params = new URLSearchParams(window.location.search);
-  const pId = params.get('pId');
+  const pId = params.get('pid');
   const status = await getStatus(pId);
   await buildPTracker();
 
