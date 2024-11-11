@@ -159,6 +159,15 @@ export default async function decorate(doc) {
             });
           }
 
+          const taskCellEl = taskRowEl.querySelector('.task');
+          const theTask = details?.filter(t => {
+            return t.task === taskCellEl.dataset.is;
+          });
+
+          taskCellEl.addEventListener('click', () => {
+            alert(theTask[0].desc || 'This page intentionally left blank.');
+          });
+
           const roleCellEl = taskRowEl.querySelector('.role');
           const role = roles?.data?.filter(r => {
             return r.Assigned === roleCellEl.dataset.is;
